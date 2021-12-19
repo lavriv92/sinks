@@ -9,7 +9,7 @@ import pprint
 import functools
 
 from sinks import Source
-from sinks.operators import extract_key, extract_partials, group_by
+from sinks.operators import extract_key, extract_partials, group_by, groupped
 
 
 def main():
@@ -26,6 +26,13 @@ def main():
             >> extract_partials('id', 'title', 'userId')
             >> group_by('userId')
             >> pprint.pprint
+    )()
+
+    r = (
+        Source([1,2,3,4,5,6,7,8,9, 10])
+          >> groupped(3)
+          >> list
+          >> pprint.pprint
     )()
 
 if __name__ == '__main__':

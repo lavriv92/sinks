@@ -1,8 +1,11 @@
+"""
+Provides operators
+"""
 import functools
 import itertools
 
 
-__all__ = ['extract_key', 'extract_partials', 'group_by']
+__all__ = ['extract_key', 'extract_partials', 'group_by', 'groupped']
 
 
 def extract_key(key):
@@ -15,6 +18,15 @@ def extract_partials(*keys):
 
 def group_by(key):
     return lambda data: functools.reduce(group_reducer(key), data, {})
+
+
+def groupped(chunk_size=1):
+    def wrapped(iterable):
+        l = len(iterable)
+        for i in range(0, l, chunk_size):
+            yield iterable[i:min(i + chunk_size, l)]
+
+    return wrapped
 
 
 def group_reducer(key):
