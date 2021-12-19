@@ -1,9 +1,8 @@
-# Streeming library
+# Sinks
 
 ### Simple stream
 
-``````'''
-
+``````'
 ```python
 add_six = lambda x: x + 6
 
@@ -19,5 +18,4 @@ add_six = lambda x: x + 6
       >> group_by('userId')
       >> pprint.pprint
     )()
-
 ```
