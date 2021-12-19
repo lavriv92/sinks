@@ -3,12 +3,26 @@ Provides operators
 """
 import functools
 import itertools
+import collections
 
 
 __all__ = ['extract_key', 'extract_partials', 'group_by', 'groupped']
 
 
-def extract_key(key):
+def extract_key(key: str):
+    """
+    Extracts field from element of collections 
+
+    Attributes
+    ----------
+
+    key: str
+
+    Returns
+    -------
+    func
+        function to extract specified field using key
+    """
     return functools.partial(map, lambda x: x.get(key, None))
 
 
@@ -17,26 +31,26 @@ def extract_partials(*keys):
 
 
 def group_by(key):
-    return lambda data: functools.reduce(group_reducer(key), data, {})
+    empty_result = collections.defaultdict(list)
+    return lambda data: dict(
+        functools.reduce(group_reducer(key), data, empty_result)
+    )
 
 
 def groupped(chunk_size=1):
     def wrapped(iterable):
         l = len(iterable)
-        for i in range(0, l, chunk_size):
-            yield iterable[i:min(i + chunk_size, l)]
+        return (
+            iterable[i:min(i + chunk_size, l)] for i in range(0, l, chunk_size)
+        )
 
     return wrapped
 
 
 def group_reducer(key):
     def wrapped(acc, item):
-        key_name = item[key]
+        acc[item[key]].append(item)
 
-        if key_name in acc:
-            acc[key_name].append(item)
-        else:
-            acc[key_name] = [item]
         return acc
 
     return wrapped
