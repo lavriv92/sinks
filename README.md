@@ -1,8 +1,7 @@
 # Sinks
 
-### Simple stream
+## Simple stream
 
-``````'
 ```python
 add_six = lambda x: x + 6
 
@@ -19,3 +18,5 @@ add_six = lambda x: x + 6
       >> pprint.pprint
     )()
 ```
+
+## Generator stream
