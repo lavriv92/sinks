@@ -4,7 +4,7 @@
 
 ``````'''
 
-```py
+```python
 add_six = lambda x: x + 6
 
 (
