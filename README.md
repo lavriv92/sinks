@@ -19,7 +19,7 @@ add_six = lambda x: x + 6
     Source(2)
       >> add_six
       >> print
-  )()
+)()
 ```
 
 ## Http stream
