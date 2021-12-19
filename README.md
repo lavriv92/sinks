@@ -20,3 +20,17 @@ add_six = lambda x: x + 6
 ```
 
 ## Generator stream
+
+```python
+add_six = lambda x: x + 6
+divide = lambda x: x / 2
+
+source = (
+    GeneratorSource([1,2,3,4])
+        >> add_six
+        >> divide
+)
+
+for i in source:
+    print(i)
+```
