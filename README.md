@@ -1,5 +1,7 @@
 # Sinks
 
+Simple library to provide simple streams from various sources
+
 ## Instalation
 
 ```sh
