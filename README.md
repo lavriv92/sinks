@@ -10,13 +10,17 @@ add_six = lambda x: x + 6
       >> add_six
       >> print
   )()
+```
 
-  r = (
-    Source.from_json_url('https://jsonplaceholder.typicode.com/albums')
-      >> extract_partials('id', 'title', 'userId')
-      >> group_by('userId')
-      >> pprint.pprint
-    )()
+# Http stream
+
+```python
+r = (
+  Source.from_json_url('https://jsonplaceholder.typicode.com/albums')
+    >> extract_partials('id', 'title', 'userId')
+    >> group_by('userId')
+    >> pprint.pprint
+)()
 ```
 
 ## Generator stream
@@ -31,6 +35,6 @@ source = (
         >> divide
 )
 
-for i in source:
-    print(i)
+for item in source:
+    print(item)
 ```
