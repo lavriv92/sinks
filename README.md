@@ -1,5 +1,11 @@
 # Sinks
 
+## Instalation
+
+```sh
+pip install sinks
+```
+
 ## Simple stream
 
 ```python
