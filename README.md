@@ -20,7 +20,7 @@ add_six = lambda x: x + 6
   )()
 ```
 
-# Http stream
+## Http stream
 
 ```python
 r = (
