@@ -6,6 +6,8 @@
 Welcome to sinks's documentation!
 =================================
 
+- :doc:`quickstart`
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
