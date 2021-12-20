@@ -1,5 +1,7 @@
 """
 Provides operators
+
+:meta public:
 """
 import functools
 import itertools
@@ -22,6 +24,8 @@ def extract_key(key: str):
     -------
     func
         function to extract specified field using key
+
+    :meta public:
     """
     return functools.partial(map, lambda x: x.get(key, None))
 
