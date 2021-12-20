@@ -14,3 +14,5 @@ Simple stream:
        >> print
    )()
 
+Stream from http:
+

@@ -5,7 +5,6 @@
 
 Welcome to sinks's documentation!
 =================================
-
 - :doc:`quickstart`
 
 .. toctree::
