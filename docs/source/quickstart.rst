@@ -2,6 +2,7 @@ Quickstart
 ==========
 
 Simple stream
+
 .. code-block:: python
     from sinks import Source
 
