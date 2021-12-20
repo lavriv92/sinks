@@ -4,6 +4,7 @@ Quickstart
 Simple stream:
 
 .. code-block:: python
+
    from sinks import Source
 
    add_six = lambda x: x + 6
