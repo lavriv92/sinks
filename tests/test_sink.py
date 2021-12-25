@@ -16,12 +16,10 @@ class SourceTestCase(unittest.TestCase):
 
         self.assertEqual(len(source.funcs), 2)
 
-
     def test_adding_source(self):
         source = Source([1, 2, 3])
 
         self.assertListEqual(source.source, [1, 2, 3])
-
 
     def test_correct_combinations(self):
         add_one = functools.partial(map, lambda x: x + 1)
@@ -29,3 +27,4 @@ class SourceTestCase(unittest.TestCase):
         r = source >> add_one >> list
 
         self.assertListEqual(r(), [2,3,4])
+
