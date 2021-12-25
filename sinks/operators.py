@@ -3,12 +3,13 @@ Provides operators
 
 :meta public:
 """
+import asyncio
 import functools
-import itertools
 import collections
 
 
-__all__ = ['extract_key', 'extract_partials', 'group_by', 'groupped']
+__all__ = ['extract_key', 
+           'extract_partials', 'group_by', 'groupped', 'take', 'take_while']
 
 
 def extract_key(key: str):
@@ -17,7 +18,6 @@ def extract_key(key: str):
 
     Attributes
     ----------
-
     key: str
 
     Returns
@@ -31,6 +31,19 @@ def extract_key(key: str):
 
 
 def extract_partials(*keys):
+    """
+    Exatracts partial object from
+
+    Attributes
+    ----------
+    *keys list[str]
+
+    Returns
+    -------
+    func 
+
+    :meta public:
+    """
     return functools.partial(map, lambda item: {k: item[k] for  k in keys})
 
 
@@ -49,6 +62,23 @@ def groupped(chunk_size=1):
         )
 
     return wrapped
+
+
+def take(n):
+    return lambda data: data[:min(n, len(data))]
+
+
+def async_map(fn):
+    async def wrapper(collection):
+        tasks = [fn(item) for item in collection]
+
+        return asyncio.gather(*tasks)
+
+    return wrapper
+
+
+def take_while(func):
+    return lambda data: [val for val in data if func(val)]
 
 
 def group_reducer(key):

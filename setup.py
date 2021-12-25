@@ -13,7 +13,8 @@ setup(
     author='Ivan Lavriv',
     url='https://github.com/lavriv92/sinks',
     project_urls={
-        'Issues': 'https://github.com/lavriv92/sinks/issues'
+        'Issues': 'https://github.com/lavriv92/sinks/issues',
+        'Documentation': 'https://sinks.readthedocs.io/en/latest/'
     },
     install_requires=['requests'],
     package=find_packages(exclude=('examples','tests',)),

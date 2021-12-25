@@ -1,4 +1,3 @@
-import asyncio
 import functools
 
 from sinks.base_source import BaseSource
