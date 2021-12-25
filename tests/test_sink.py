@@ -1,4 +1,5 @@
 import unittest
+import functools
 
 from sinks import Source
 
@@ -23,6 +24,8 @@ class SourceTestCase(unittest.TestCase):
 
 
     def test_correct_combinations(self):
-        source = Source([1,2,4])
+        add_one = functools.partial(map, lambda x: x + 1)
+        source = Source([1,2,3])
+        r = source >> add_one >> list
 
-        self.assertEqual(1, 1)
+        self.assertListEqual(r(), [2,3,4])
