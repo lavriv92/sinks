@@ -16,8 +16,11 @@ setup(
         'Issues': 'https://github.com/lavriv92/sinks/issues',
         'Documentation': 'https://sinks.readthedocs.io/en/latest/'
     },
+    package_dir={
+        '': 'src/'
+    },
     install_requires=['requests'],
-    package=find_packages(exclude=('examples','tests',)),
+    package=find_packages(where="src", exclude=('examples','tests',)),
     long_description=README,
     long_description_content_type='text/markdown',
     include_package_data=True,

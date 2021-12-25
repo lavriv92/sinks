@@ -2,7 +2,7 @@ import pathlib
 import sys
 
 
-BASE_PATH = pathlib.Path('.').absolute().parent
+BASE_PATH = pathlib.Path('.').absolute()
 
 
-sys.path.append(str(BASE_PATH))
+sys.path.append(str(BASE_PATH / 'src'))
