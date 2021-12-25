@@ -1,7 +1,7 @@
 import unittest
 
 from sinks.operators import (
-    extract_key, extract_partials, take, take_while, groupped
+    extract_key, extract_partials, take, take_while, groupped, group_by
 )
 from sinks.sink import Source
 
@@ -38,3 +38,23 @@ class OperatorsTestCase(unittest.TestCase):
         r = source >> groupped(2) >> list
 
         self.assertEqual(r(), [[1, 2], [3, 4]])
+
+    def test_group_by(self):
+        books = [
+            {'name': 'Lord of the rings', 'author': 'J. R. R. Tolkin'},
+            {'name': 'Harry Potter', 'author': 'J. K. Roling'},
+            {'name': 'Fantastic beasts', 'author': 'J. K. Roling'}
+        ]
+        source = Source(books)
+        r = source >> group_by('author')
+        expected_result = {
+            'J. K. Roling': [
+                {'name': 'Harry Potter', 'author': 'J. K. Roling'},
+                {'name': 'Fantastic beasts', 'author': 'J. K. Roling'}
+            ],
+            'J. R. R. Tolkin': [
+                {'name': 'Lord of the rings', 'author': 'J. R. R. Tolkin'}
+            ]
+        }
+
+        self.assertEqual(r(), expected_result)
